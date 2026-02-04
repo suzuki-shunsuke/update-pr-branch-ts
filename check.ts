@@ -6,12 +6,17 @@ export const checkUpdated = (
   files: string[],
   compareResult: CompareResult,
   maxBehindBy: number,
+  updateIf300Files: boolean,
 ): boolean => {
   if (maxBehindBy >= 0 && compareResult.behindBy > maxBehindBy) {
     // If maxBehindBy is negative, it means no limit is set
     core.info(
       `Branch is behind by ${compareResult.behindBy} commits (limit: ${maxBehindBy})`,
     );
+    return true;
+  }
+  if (updateIf300Files && compareResult.files?.length > 300) {
+    core.info("more than 300 files changed, updating branch");
     return true;
   }
   for (const commitFile of compareResult.files ?? []) {

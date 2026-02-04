@@ -15,4 +15,5 @@ export type Inputs = {
   baseBranch: string;
   headBranch: string;
   contextPRNumber: number;
+  updateIf300Files: boolean;
 };
