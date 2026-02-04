@@ -50,11 +50,13 @@ export const getToken = async (inputs: tokenInput): Promise<string> => {
     permissions.pull_requests = "write";
   }
   core.info(
-    `creating a GitHub App token: ${JSON.stringify({
-      owner: inputs.repo.owner,
-      repositories: [inputs.repo.repo],
-      permissions: permissions,
-    })}`,
+    `creating a GitHub App token: ${
+      JSON.stringify({
+        owner: inputs.repo.owner,
+        repositories: [inputs.repo.repo],
+        permissions: permissions,
+      })
+    }`,
   );
   const appToken = await githubAppToken.create({
     appId: inputs.app.id,
