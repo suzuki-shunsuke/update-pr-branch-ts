@@ -15,7 +15,7 @@ export const checkUpdated = (
     );
     return true;
   }
-  if (updateIf300Files && compareResult.files?.length > 300) {
+  if (updateIf300Files && compareResult.files?.length === 300) {
     core.info("more than 300 files changed, updating branch");
     return true;
   }
