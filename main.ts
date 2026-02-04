@@ -45,7 +45,14 @@ const run = async (inputs: Inputs): Promise<Result> => {
     inputs.headBranch = pr.head;
   }
   const compareResult = await compareCommits(octokit, inputs);
-  if (!checkUpdated([...inputs.files], compareResult, inputs.maxBehindBy)) {
+  if (
+    !checkUpdated(
+      [...inputs.files],
+      compareResult,
+      inputs.maxBehindBy,
+      inputs.updateIf300Files,
+    )
+  ) {
     core.info("skip updating branch");
     return {
       updated: false,
