@@ -1,6 +1,7 @@
 import * as core from "@actions/core";
 import * as github from "@actions/github";
 import type { Inputs } from "./input.ts";
+export type { Inputs };
 import { compareCommits } from "./compare.ts";
 import { updateBranch } from "./update_branch.ts";
 import { getToken, revoke } from "./github_token.ts";
