@@ -7,15 +7,19 @@ import { getToken, revoke } from "./github_token.ts";
 import { getPullRequest } from "./get_pr.ts";
 import { checkUpdated } from "./check.ts";
 
-export const updatePRBranch = async (inputs: Inputs): Promise<void> => {
+export const updatePRBranch = async (inputs: Inputs): Promise<Result> => {
   try {
-    await run(inputs);
+    return await run(inputs);
   } finally {
     await revoke();
   }
 };
 
-const run = async (inputs: Inputs) => {
+export type Result = {
+  updated: boolean;
+};
+
+const run = async (inputs: Inputs): Promise<Result> => {
   const octokit = github.getOctokit(
     await getToken({
       repo: {
@@ -42,12 +46,12 @@ const run = async (inputs: Inputs) => {
   const compareResult = await compareCommits(octokit, inputs);
   if (!checkUpdated([...inputs.files], compareResult, inputs.maxBehindBy)) {
     core.info("skip updating branch");
-    core.setOutput("updated", false);
-    return;
+    return {
+      updated: false,
+    };
   }
   await updateBranch(octokit, inputs);
-  core.setOutput("updated", true);
-  if (inputs.prNumber === inputs.contextPRNumber) {
-    core.setFailed("PR branch is updated");
-  }
+  return {
+    updated: true,
+  };
 };
