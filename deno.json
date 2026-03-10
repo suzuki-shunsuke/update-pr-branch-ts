@@ -17,10 +17,10 @@
   },
   "imports": {
     "@actions/core": "npm:@actions/core@^3.0.0",
-    "@actions/github": "npm:@actions/github@^6.0.1",
-    "@csm-actions/update-branch-action": "jsr:@csm-actions/update-branch-action@^0.0.3",
-    "@octokit/rest": "npm:@octokit/rest@^22.0.0",
-    "@suzuki-shunsuke/github-app-token": "jsr:@suzuki-shunsuke/github-app-token@^0.0.3",
-    "minimatch": "npm:minimatch@^10.1.2"
+    "@actions/github": "npm:@actions/github@^9.0.0",
+    "@csm-actions/update-branch-action": "jsr:@csm-actions/update-branch-action@^0.0.4",
+    "@octokit/rest": "npm:@octokit/rest@^22.0.1",
+    "@suzuki-shunsuke/github-app-token": "jsr:@suzuki-shunsuke/github-app-token@^0.0.4",
+    "minimatch": "npm:minimatch@^10.2.4"
   }
 }
