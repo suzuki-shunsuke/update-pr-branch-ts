@@ -7,10 +7,9 @@ export const updateBranch = async (
   octokit: ReturnType<typeof getOctokit>,
   inputs: Inputs,
 ) => {
-  if (inputs.csmAppPrivateKey) {
+  if (inputs.csmAppOctokit) {
     await updateBranchAction({
-      appID: inputs.csmAppID,
-      appPrivateKey: inputs.csmAppPrivateKey,
+      appOctokit: inputs.csmAppOctokit,
       serverRepositoryName: inputs.csmServerRepoName,
       serverRepositoryOwner: inputs.csmServerRepoOwner,
       owner: inputs.repoOwner,

@@ -21,10 +21,7 @@ type tokenInput = {
   };
   githubToken: string;
   defaultGitHubToken: string;
-  app: {
-    id: string;
-    privateKey: string;
-  };
+  appOctokit?: githubAppToken.Client;
   actions: {
     getPR: boolean;
     updateBranch: boolean;
@@ -35,7 +32,7 @@ export const getToken = async (inputs: tokenInput): Promise<string> => {
   if (inputs.githubToken) {
     return inputs.githubToken;
   }
-  if (!inputs.app.privateKey) {
+  if (!inputs.appOctokit) {
     return inputs.defaultGitHubToken;
   }
   const permissions: githubAppToken.Permissions = {
@@ -59,8 +56,7 @@ export const getToken = async (inputs: tokenInput): Promise<string> => {
     }`,
   );
   const appToken = await githubAppToken.create({
-    appId: inputs.app.id,
-    privateKey: inputs.app.privateKey,
+    octokit: inputs.appOctokit,
     owner: inputs.repo.owner,
     repositories: [inputs.repo.repo],
     permissions: permissions,
