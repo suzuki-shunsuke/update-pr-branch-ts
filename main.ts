@@ -29,13 +29,10 @@ const run = async (inputs: Inputs): Promise<Result> => {
       },
       githubToken: inputs.githubToken,
       defaultGitHubToken: inputs.defaultGitHubToken,
-      app: {
-        id: inputs.appID,
-        privateKey: inputs.appPrivateKey,
-      },
+      appOctokit: inputs.appOctokit,
       actions: {
         getPR: inputs.baseBranch === "",
-        updateBranch: inputs.csmAppPrivateKey === "",
+        updateBranch: !inputs.csmAppOctokit,
       },
     }),
   );
