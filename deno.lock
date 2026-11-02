@@ -11,7 +11,7 @@
     "npm:@actions/github@^9.1.1": "9.1.1",
     "npm:@octokit/openapi-types@^29.0.1": "29.0.1",
     "npm:@octokit/rest@^22.0.1": "22.0.1",
-    "npm:minimatch@^10.2.4": "10.2.6"
+    "npm:minimatch@11": "11.0.3"
   },
   "jsr": {
     "@csm-actions/label@0.1.0": {
@@ -79,6 +79,9 @@
     },
     "@actions/io@3.0.2": {
       "integrity": "sha512-nRBchcMM+QK1pdjO7/idu86rbJI5YHUKCvKs0KxnSYbVe3F51UfGxuZX4Qy/fWlp6l7gWFwIkrOzN+oUK03kfw=="
+    },
+    "@isaacs/nonrecursive-glob-match@1.0.3": {
+      "integrity": "sha512-SI7kyKHq4XXDRozw+r9GlRZkia1ZkFrpLW98r2IC2Bpr8YkFGE3fvjzmxCG0x78A++69HmDNrDvSMYBZmHGpKA=="
     },
     "@octokit/auth-token@6.0.0": {
       "integrity": "sha512-P4YJBPdPSpWTQ1NU4XYdvHvXJJDxM6YwpS0FZHRgP7YFkdVxsWcpWGy/NVqlAA7PcPCnMacXlRm1y2PFZRWL/w=="
@@ -192,9 +195,10 @@
     "json-with-bigint@3.5.12": {
       "integrity": "sha512-uwbF/wSSuOgC7qqlq27Xp5B6a2MHVug3t0idZdTqu0JnlFvgJuH7ju+KAk/J06C7GfhoYy2gnb9wz2INqcne7w=="
     },
-    "minimatch@10.2.6": {
-      "integrity": "sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==",
+    "minimatch@11.0.3": {
+      "integrity": "sha512-iny/40PEGkNJQ5/Pv6z3nm6FbRAby32GeZRjCUJk2WnNDbgPSTcdI+DDvLqsgBdD4cD5sMtMheqPPnehCCa8Nw==",
       "dependencies": [
+        "@isaacs/nonrecursive-glob-match",
         "brace-expansion"
       ]
     },
@@ -215,7 +219,7 @@
       "npm:@actions/core@3",
       "npm:@actions/github@9",
       "npm:@octokit/rest@^22.0.1",
-      "npm:minimatch@^10.2.4"
+      "npm:minimatch@11"
     ]
   }
 }
